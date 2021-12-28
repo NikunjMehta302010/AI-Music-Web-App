@@ -1,6 +1,9 @@
 song_1 = "";
 song_2 = "";
 
+song1_status = "";
+song2_status = "";
+
 leftWristX = 0;
 leftWristY = 0;
 
@@ -32,7 +35,35 @@ function modelLoaded() {
 
 function draw() {
     image (video, 0, 0, 400, 400);
+
+    if(scoreRightWrist > 0.2)
+	{ 
+		circle(rightWristX,rightWristY,20);
+
+			song_2.stop();
+
+		if(song1_status == false)
+		{
+			song1.play();
+			document.getElementById("song").innerHTML = "Playing - Stay Song"
+		}
+	}
+
+	if(scoreLeftWrist > 0.2)
+	{
+		circle(leftWristX,leftWristY,20);
+
+			song_1.stop();
+
+		if(song2_status == false)
+		{
+			song_2.play();
+			document.getElementById("song").innerHTML = "Playing - Harry Potter Theme Song"
+		}
+	}
+
 }
+
 
 function gotPoses(results)
 {
